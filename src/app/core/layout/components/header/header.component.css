@@ -1,0 +1,42 @@
+mat-toolbar {
+  background: #3879da;
+}
+
+.custom-toolbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 0 36px;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-image {
+  height: 60px;
+  margin-right: 12px;
+}
+
+.toolbar-title {
+  font-family: "Architects Daughter", cursive;
+  font-size: 25px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.toolbar-user {
+  margin-left: auto;
+  color: #fff;
+  font-size: 18px;
+}
+
+.toolbar-user-icon {
+  color: #fff;
+  margin-left: 12px;
+}
+
+.toolbar-link {
+  display: contents;
+}

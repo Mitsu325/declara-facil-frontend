@@ -1,0 +1,41 @@
+<main class="users-container">
+  <h1>Usuários cadastrados</h1>
+
+  <p class="description">
+    {{ !dataSource.length ? 'Não foi cadastrado nunhum usuário.' : 'Visualize os usuários cadastrados.' }}
+  </p>
+
+  <mat-form-field class="fill" class="search-input">
+    <mat-label>Buscar usuário</mat-label>
+    <input matInput type="text" placeholder="Buscar por nome" [(ngModel)]="filter" (ngModelChange)="onSearchChange()"
+      [disabled]="!dataSource.length && !filter.length" />
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+
+  @if (dataSource.length) {
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef>CPF</th>
+      <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef>Data de cadastro</th>
+      <td mat-cell *matCellDef="let element">{{ element.createdAt | date : "dd/MM/yyyy HH:mm" }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  }
+</main>

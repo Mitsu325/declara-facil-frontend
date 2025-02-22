@@ -1,0 +1,22 @@
+.error-page-content {
+  width: 100%;
+  min-height: calc(100vh - 80px - 66px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 48%;
+    height: auto;
+  }
+
+  .title {
+    color: var(--sys-primary);
+    text-align: center;
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,43 @@
+<h2 mat-dialog-title class="title">Gerar declaração</h2>
+<mat-dialog-content>
+  @if (!pendingRequests.length) {
+  <p>
+    Nenhuma das solicitações selecionadas está com o status "Pendente". Apenas
+    solicitações pendentes podem gerar declarações.
+  </p>
+  <p>Por favor, revise as solicitações e tente novamente.</p>
+  } @else {
+  <p>Você está prestes a gerar declarações para os seguintes usuários:</p>
+
+  <ul class="request-list">
+    @for (pendingRequest of pendingRequests; track pendingRequest.id) {
+    <li>{{ pendingRequest.name }}</li>
+    }
+  </ul>
+
+  @if(requiresDirectorSignature) {
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Selecione o Diretor para assinatura</mat-label>
+    <mat-select [formControl]="selectedDirector" placeholder="Selecione o diretor">
+      @for (director of directors; track director.id) {
+      <mat-option [value]="director.id">
+        {{ director.name }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  }
+
+  <p>
+    Tem certeza de que deseja continuar? Clique em "Confirmar" para prosseguir
+    ou "Cancelar" para revisar sua seleção.
+  </p>
+  }
+</mat-dialog-content>
+<mat-dialog-actions class="action-group">
+  <button mat-stroked-button mat-dialog-close>Cancelar</button>
+  <button mat-flat-button [disabled]="!pendingRequests.length || (requiresDirectorSignature && !selectedDirector.value)"
+    (click)="onConfirm()">
+    Confirmar
+  </button>
+</mat-dialog-actions>

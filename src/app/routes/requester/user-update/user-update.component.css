@@ -1,0 +1,28 @@
+h1 {
+  background-color: #f2f3f7;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  /* Espaço abaixo do h1 */
+}
+
+.update-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+
+  .form-field {
+    min-width: 300px;
+    max-width: 700px;
+    margin-bottom: 12px;
+    flex: 1 1 45%;
+  }
+}
+
+button[type="submit"] {
+  grid-column: span 2;
+  /* Faz o botão de submit ocupar a largura total */
+  justify-self: center;
+  /* Alinha o botão à direita */
+  border-radius: 10px;
+}

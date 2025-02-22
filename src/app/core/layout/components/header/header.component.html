@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <div class="logo-group">
+    <img Src="img/contrato.png" alt="" class="toolbar-image" />
+    <span class="toolbar-title"> DeclaraFácil</span>
+  </div>
+  <ng-container *ngIf="username">
+    <a [routerLink]="['/profile']" class="toolbar-link">
+      <span class="toolbar-user">
+        {{ username }}
+      </span>
+      <mat-icon
+        aria-hidden="true"
+        aria-label=""
+        fontIcon="person"
+        class="toolbar-user-icon"
+      ></mat-icon>
+    </a>
+  </ng-container>
+</mat-toolbar>

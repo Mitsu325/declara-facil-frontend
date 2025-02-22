@@ -1,0 +1,36 @@
+<main class="completed-declarations-container">
+  <h1>Declarações geradas</h1>
+
+  @if (progressValue !== 100) {
+  <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
+  <p>{{ currentRequest }} de {{ totalRequest }} gerados...</p>
+  } @else {
+  <p>Declarações geradas com sucesso: {{ summary.success }}</p>
+  <p>Declarações com erro: {{ summary.error }}</p>
+  }
+
+  <!-- List -->
+  @if (!declarations.length) {
+  <p class="description">Nenhuma declaração a ser exibida.</p>
+  } @else {
+
+  <ul class="request-list">
+    @for (declaration of declarations; track declaration.id) {
+    <li>
+      <span>
+        {{ declaration.name }}
+      </span>
+      <button mat-flat-button *ngIf="declaration.url" (click)="downloadFile(declaration.url)">
+        <mat-icon>download</mat-icon>
+        Download PDF
+      </button>
+    </li>
+    }
+  </ul>
+  }
+
+  <div class="pos-button">
+    <a mat-flat-button class="back-button" routerLink="/requests"><mat-icon>arrow_back</mat-icon> Voltar para
+      solicitações</a>
+  </div>
+</main>

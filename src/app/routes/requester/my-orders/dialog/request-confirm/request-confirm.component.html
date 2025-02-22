@@ -1,0 +1,32 @@
+<h2 mat-dialog-title class="title">Confirmar Solicitação de Declaração</h2>
+<mat-dialog-content>
+  <p>
+    Você está prestes a solicitar uma nova declaração. <br />Deseja continuar
+    com esta ação?
+  </p>
+
+  <mat-form-field class="form-field">
+    <mat-label>Escolha a declaração</mat-label>
+    <mat-select
+      [(ngModel)]="selectedDeclaration"
+      placeholder="Selecione uma declaração"
+    >
+      <mat-option
+        *ngFor="let declaration of declarations"
+        [value]="declaration.id"
+      >
+        {{ declaration.type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="action-group">
+  <button mat-stroked-button mat-dialog-close>Cancelar</button>
+  <button
+    mat-flat-button
+    (click)="onConfirm()"
+    [disabled]="!selectedDeclaration"
+  >
+    Confirmar
+  </button>
+</mat-dialog-actions>

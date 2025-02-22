@@ -1,0 +1,35 @@
+<h2 mat-dialog-title class="title">
+  {{ type === "completed" ? "Finalizar" : "Rejeitar" }} solicitações
+</h2>
+<mat-dialog-content>
+  @if (!processingRequests.length) {
+  <p>
+    Nenhuma das solicitações selecionadas está com o status "Processando".
+    Apenas solicitações em processamento podem ser concluídas.
+  </p>
+  <p>Por favor, revise as solicitações e tente novamente.</p>
+  } @else {
+  <p>
+    Você está prestes a {{ type === "completed" ? "finalizar" : "rejeitar" }} as
+    solicitações dos seguintes usuários:
+  </p>
+
+  <ul class="request-list">
+    @for (pendingRequest of processingRequests; track pendingRequest.id) {
+    <li>{{ pendingRequest.name }}</li>
+    }
+  </ul>
+
+  <p>
+    Tem certeza de que deseja continuar? Esta ação é irreversível! <br />
+    Clique em "Confirmar" para prosseguir ou "Cancelar" para revisar sua
+    seleção.
+  </p>
+  }
+</mat-dialog-content>
+<mat-dialog-actions class="action-group">
+  <button mat-stroked-button mat-dialog-close>Cancelar</button>
+  <button mat-flat-button (click)="onConfirm()" [disabled]="!processingRequests.length">
+    Confirmar
+  </button>
+</mat-dialog-actions>

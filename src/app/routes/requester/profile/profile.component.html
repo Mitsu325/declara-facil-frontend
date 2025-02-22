@@ -1,0 +1,113 @@
+<main>
+  <h1>Meu Perfil</h1>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div *ngIf="!isLoading" class="profile-info">
+    <!-- Campo Nome -->
+    <div class="form-field">
+      <p class="field-label">Nome</p>
+      <p class="field-value">{{ profileForm.get("name")?.value ?? "N/A" }}</p>
+    </div>
+
+    <!-- Campo Email -->
+    <div class="form-field">
+      <p class="field-label">Email</p>
+      <p class="field-value">{{ profileForm.get("email")?.value ?? "N/A" }}</p>
+    </div>
+
+    <!-- Campo CPF -->
+    <div class="cpf-rg-emissor-group">
+      <div class="form-field">
+        <p class="field-label">CPF</p>
+        <p class="field-value">
+          {{ (profileForm.get("cpf")?.value | cpf) ?? "N/A" }}
+        </p>
+      </div>
+
+      <!-- Campo RG -->
+      <div class="form-field">
+        <p class="field-label">RG</p>
+        <p class="field-value">
+          {{ (profileForm.get("rg")?.value | rg) ?? "N/A" }}
+        </p>
+      </div>
+
+      <!-- Campo Órgão Emissor -->
+      <div class="form-field">
+        <p class="field-label">Órgão Emissor</p>
+        <p class="field-value">
+          {{ profileForm.get("issuing_agency")?.value ?? "N/A" }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Campo Rua -->
+    <div class="form-field">
+      <p class="field-label">Rua</p>
+      <p class="field-value">{{ profileForm.get("street")?.value ?? "N/A" }}</p>
+    </div>
+
+    <!-- Campo Número da Casa -->
+    <div class="form-field">
+      <p class="field-label">Número da Casa</p>
+      <p class="field-value">
+        {{ profileForm.get("house_number")?.value ?? "N/A" }}
+      </p>
+    </div>
+
+    <!-- Campo Complemento -->
+    <div class="form-field">
+      <p class="field-label">Complemento</p>
+      <p class="field-value">
+        {{ profileForm.get("complement")?.value ?? "N/A" }}
+      </p>
+    </div>
+
+    <!-- Campo Bairro -->
+    <div class="form-field">
+      <p class="field-label">Bairro</p>
+      <p class="field-value">
+        {{ profileForm.get("neighborhood")?.value ?? "N/A" }}
+      </p>
+    </div>
+
+    <!-- Campo Cidade -->
+    <div class="cpf-rg-emissor-group">
+      <div class="form-field">
+        <p class="field-label">Cidade</p>
+        <p class="field-value">{{ profileForm.get("city")?.value ?? "N/A" }}</p>
+      </div>
+
+      <!-- Campo Estado -->
+      <div class="form-field">
+        <p class="field-label">Estado</p>
+        <p class="field-value">
+          {{ profileForm.get("state")?.value ?? "N/A" }}
+        </p>
+      </div>
+
+      <!-- Campo Código Postal -->
+      <div class="form-field">
+        <p class="field-label">Código Postal</p>
+        <p class="field-value">
+          {{ (profileForm.get("postal_code")?.value | cep) ?? "N/A" }}
+        </p>
+      </div>
+    </div>
+
+    <button mat-flat-button color="primary" (click)="onEdit()">
+      Editar meus dados
+    </button>
+
+    <button mat-flat-button color="primary" (click)="openGenerateDeclarationConfirmDialog()">
+      Excluir perfil
+    </button>
+  </div>
+</main>
