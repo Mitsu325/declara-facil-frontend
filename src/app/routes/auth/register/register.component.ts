@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import axios from 'axios';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,6 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     NgxMaskDirective,
     MatIconModule,
     RouterLink,
+    FormsModule,
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
@@ -36,6 +37,7 @@ export class RegisterComponent {
   private apiUrl = environment.apiUrl;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
+  agreeToPrivacyPolicy: boolean = false;
 
   states: string[] = [
     'AC',
@@ -161,7 +163,7 @@ export class RegisterComponent {
   }
 
   async onSubmit() {
-    if (this.registerForm.invalid) {
+    if (this.registerForm.invalid || !this.agreeToPrivacyPolicy) {
       this.errorMessage = this.registerForm.hasError('passwordMismatch')
         ? 'Senhas não conferem.'
         : 'Preencha todos os campos obrigatórios.';
