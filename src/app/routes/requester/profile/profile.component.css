@@ -49,3 +49,9 @@ button {
   /* Espaço entre cada campo */
   width: 92%;
 }
+
+.pos-load {
+  display: flex;
+  justify-content: center;
+  margin-top: 240px;
+}
