@@ -77,8 +77,10 @@ export class RequestsComponent {
       width: '60%',
     });
 
+    const requiresDirectorSignature = pendingRequests.some(request => request.declarationSignature === 'director');
+
     dialogRef.afterClosed().subscribe((result) => {
-      if (result.director) {
+      if (!requiresDirectorSignature || (requiresDirectorSignature && result.director)) {
         this.generateDeclarations(pendingRequests, result.director);
       }
     });
