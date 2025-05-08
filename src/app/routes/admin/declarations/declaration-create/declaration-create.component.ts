@@ -48,7 +48,7 @@ export class DeclarationCreateComponent {
       type: ['', [Validators.required]],
       title: ['', [Validators.required]],
       content: ['', [Validators.required]],
-      footer: ['', [Validators.required]],
+      // footer: ['', [Validators.required]],
       signatureType: ['', [Validators.required, this.signatureTypeValidator]],
     });
   }

@@ -39,7 +39,7 @@ export class DeclarationEditComponent {
     content: '',
     type: '',
     title: '',
-    footer: '',
+    // footer: '',
     signatureType: 'director',
     active: true,
   };
@@ -61,7 +61,7 @@ export class DeclarationEditComponent {
       type: ['', [Validators.required]],
       title: ['', [Validators.required]],
       content: ['', [Validators.required]],
-      footer: ['', [Validators.required]],
+      // footer: ['', [Validators.required]],
       signatureType: ['', [Validators.required, this.signatureTypeValidator]],
     });
   }

@@ -5,7 +5,7 @@ export interface Declaration {
   type: string;
   title: string;
   content: string;
-  footer: string;
+  // footer: string;
   signatureType: SignatureType;
   active: boolean;
   createdAt?: Date;

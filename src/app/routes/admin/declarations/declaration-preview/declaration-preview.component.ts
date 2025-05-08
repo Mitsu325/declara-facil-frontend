@@ -30,11 +30,11 @@ const fakeValues = {
 export class DeclarationPreviewComponent {
   @Input() title: string = '';
   @Input() content: string = '';
-  @Input() footer: string = '';
+  // @Input() footer: string = '';
   @Input() signatureType: SignatureType = 'director';
 
   public contentLines: string = '';
-  public footerLines: string = '';
+  // public footerLines: string = '';
   public signatureLines: string = '';
 
   constructor() { }
@@ -54,11 +54,11 @@ export class DeclarationPreviewComponent {
     }
 
     let contentWithValues = this.replaceDynamicValues(this.content, fakeValues);
-    let footerWithValues = this.replaceDynamicValues(this.footer, fakeValues);
+    // let footerWithValues = this.replaceDynamicValues(this.footer, fakeValues);
     let signatureWithValues = this.replaceDynamicValues(signature, fakeValues);
 
     this.contentLines = contentWithValues;
-    this.footerLines = footerWithValues;
+    // this.footerLines = footerWithValues;
     this.signatureLines = signatureWithValues;
   }
 
